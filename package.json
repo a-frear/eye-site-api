@@ -12,7 +12,8 @@
     "migrate:production": "heroku run npm run migrate",
     "predeploy": "npm audit",
     "deploy": "git push heroku HEAD:master",
-    "postdeploy": "npm run migrate:production"
+    "postdeploy": "npm run migrate:production",
+    "ui": "browser-sync start --config bs-config.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-openid-connect": "^2.2.0",
     "express-session": "^1.17.1",
     "helmet": "^4.3.1",
     "morgan": "^1.10.0",

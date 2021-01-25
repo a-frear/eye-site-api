@@ -34,7 +34,7 @@ app.use(
  * Session Configuration
  */
 
-/*const session = {
+const session = {
   secret: process.env.SESSION_SECRET,
   cookie: {},
   resave: false,
@@ -45,12 +45,34 @@ if (app.get("env") === "production") {
   // Serve secure cookies, requires HTTPS
   session.cookie.secure = true;
 }
+/**
+ * Passport Configuration
+ */
 
+const strategy = new Auth0Strategy(
+  {
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL: process.env.AUTH0_CALLBACK_URL
+  },
+  function(accessToken, refreshToken, extraParams, profile, done) {
+    /**
+     * Access tokens are used to authorize users to an API
+     * (resource server)
+     * accessToken is the token to call the Auth0 API
+     * or a secured third-party API
+     * extraParams.id_token has the JSON Web Token
+     * profile has all the information from the user
+     */
+    return done(null, profile);
+  }
+);
 /**
  *  App Configuration
  */
 
-/*app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(expressSession(session));
 
@@ -75,29 +97,11 @@ app.use((req, res, next) => {
 // Router mounting
 app.use("/", authRouter);
 
-/**
- * Passport Configuration
- */
+const { requiresAuth } = require('express-openid-connect');
 
-// const strategy = new Auth0Strategy(
-//   {
-//     domain: process.env.AUTH0_DOMAIN,
-//     clientID: process.env.AUTH0_CLIENT_ID,
-//     clientSecret: process.env.AUTH0_CLIENT_SECRET,
-//     callbackURL: process.env.AUTH0_CALLBACK_URL
-//   },
-//   function(accessToken, refreshToken, extraParams, profile, done) {
-//     /**
-//      * Access tokens are used to authorize users to an API
-//      * (resource server)
-//      * accessToken is the token to call the Auth0 API
-//      * or a secured third-party API
-//      * extraParams.id_token has the JSON Web Token
-//      * profile has all the information from the user
-//      */
-//     return done(null, profile);
-//   }
-// );
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
 
 app.get('/', (req,res) => {
     res.send('Hello, world!')
