@@ -59,36 +59,36 @@ describe('Comments Endpoints', function() {
                     .expect(200, testComments)
             })
         })
-        // context(`Given an XSS attack comment`, () => {
-        //     const { maliciousComment, expectedComment } = makeMaliciousComment()
-        //     const testVideos = makeVideosArray()
-        //     const testUsers = makeUsersArray()
+        context(`Given an XSS attack comment`, () => {
+            const { maliciousComment, expectedComment } = makeMaliciousComment()
+            const testVideos = makeVideosArray()
+            const testUsers = makeUsersArray()
        
-        //     beforeEach('insert malicious comment', () => {
-        //         return db
-        //             .into('videos')
-        //             .insert(testVideos)
-        //             .then(() => {
-        //                 return db
-        //                 .into('users')
-        //                 .insert(testUsers)
-        //             })
-        //             .then(() => {
-        //                 return db
-        //                 .into('comments')
-        //                 .insert([maliciousComment])
-        //             })
-        //     })
+            beforeEach('insert malicious comment', () => {
+                return db
+                    .into('videos')
+                    .insert(testVideos)
+                    .then(() => {
+                        return db
+                        .into('users')
+                        .insert(testUsers)
+                    })
+                    .then(() => {
+                        return db
+                        .into('comments')
+                        .insert([maliciousComment])
+                    })
+            })
       
-        //     it('removes XSS attack content', () => {
-        //       return supertest(app)
-        //         .get(`/api/comments/${maliciousComment.id}`)
-        //         .expect(200)
-        //         .expect(res => {
-        //           expect(res.body.content).to.eql(expectedComment.content)
-        //         })
-        //     })
-        //   })
+            it('removes XSS attack content', () => {
+              return supertest(app)
+                .get(`/api/comments/${maliciousComment.id}`)
+                .expect(200)
+                .expect(res => {
+                  expect(res.body.content).to.eql(expectedComment.content)
+                })
+            })
+          })
       })
     
         describe(`POST /api/comments`, () => {
