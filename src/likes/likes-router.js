@@ -1,6 +1,6 @@
 const express = require('express')
 const LikesService = require('./likesService')
-const { requiresAuth } = require('express-openid-connect');
+//const { requiresAuth } = require('express-openid-connect');
 const likesRouter = express.Router()
 const jsonParser = express.json()
 

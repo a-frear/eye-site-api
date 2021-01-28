@@ -1,7 +1,7 @@
 const express = require('express')
 const xss = require('xss')
 const CommentsService = require('./commentsService')
-const { requiresAuth } = require('express-openid-connect');
+//const { requiresAuth } = require('express-openid-connect');
 const commentsRouter = express.Router()
 const jsonParser = express.json()
 
