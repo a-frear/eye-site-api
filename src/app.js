@@ -8,15 +8,8 @@ const { NODE_ENV } = require('./config')
 const videosRouter = require('./videos/videos-router')
 const commentsRouter = require('./comments/comments-router')
 const likesRouter = require('./likes/likes-router')
-// const path = require("path")
-// const expressSession = require("express-session")
-// const passport = require("passport")
-// const Auth0Strategy = require("passport-auth0")
-// const authRouter = require("./auth")
+const { auth, requiresAuth } = require('express-openid-connect')
 
-/**
- * App Variables
- */
 const app = express()
 
 const morganOption = (NODE_ENV === 'production')
@@ -30,7 +23,7 @@ app.use(helmet())
 app.use(cors())
 app.options('*', cors())
 
-const { auth, requiresAuth } = require('express-openid-connect');
+
 
 const config = {
   authRequired: false,
