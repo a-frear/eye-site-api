@@ -5,7 +5,7 @@ dotenv.config()
 const audience = 'https://express.eye-site'
 const domain = 'dev-lukn5ug2.us.auth0.com'
 const serverPort = process.env.PORT
-const clientOriginUrl = 'http://localhost:3000'
+const clientOriginUrl = 'https://eyesite.club'
 
 if (!audience) {
     throw new Error(
@@ -31,7 +31,7 @@ if (!clientOriginUrl) {
     )
 }
 
-const clientOrigins = ['http://localhost:3000']
+const clientOrigins = ['https://eyesite.club']
 
 module.exports = {
     audience,
