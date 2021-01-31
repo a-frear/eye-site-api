@@ -2,7 +2,7 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-const audience = process.env.AUTH0_AUDIENCE
+const audience = 'https://express.eye-site'
 const domain = process.env.AUTH0_DOMAIN
 const serverPort = process.env.PORT
 const clientOriginUrl = process.env.CLIENT_ORIGIN_URL
