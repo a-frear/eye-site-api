@@ -10,6 +10,9 @@ const CommentsService = {
             .then(rows => {
                 return rows[0]
             })
+    },
+    getById(knex, id) {
+        return knex.from('comments').select('*').where('id', id).first()
     }
 }
 

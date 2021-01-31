@@ -1,14 +1,14 @@
 const express = require('express')
 const xss = require('xss')
 const CommentsService = require('./commentsService')
-//const { requiresAuth } = require('express-openid-connect');
 const commentsRouter = express.Router()
 const jsonParser = express.json()
+const { checkJwt } = require("../authz/check-jwt");
 
 const serializeComment = comment => ({
     id: comment.id,
     video_id: comment.video_id,
-    user_id: comment.user_id,
+    user_name: comment.user_name,
     content: xss(comment.content),
     modified: comment.modified
   })
@@ -22,12 +22,11 @@ commentsRouter
           res.json(comments.map(serializeComment))
         })
         .catch(next)
-        //passing next into the .catch from the promise chain so that any errors get handled by our error handler middleware.
   })
 
-  .post(jsonParser, /*requiresAuth(),*/ (req, res, next) => {
-    const { video_id, user_id, content } = req.body
-    const newComment = { video_id, user_id, content }
+  .post(jsonParser, checkJwt, (req, res, next) => {
+    const { video_id, user_name, content } = req.body
+    const newComment = { video_id, user_name, content }
 
     for (const [key, value] of Object.entries(newComment))
     if (value == null)
@@ -47,5 +46,27 @@ commentsRouter
       })
       .catch(next)
   })
+
+  commentsRouter
+      .route('/:comment_id')
+      .all((req, res, next) => {
+        CommentsService.getById(
+            req.app.get('db'), 
+            req.params.comment_id
+            )
+            .then(comment => {
+              if(!comment){
+                return res.status(404).json({
+                  error: { message: `Comment does not exist`}
+                })
+              }
+              res.comment = comment
+              next()
+            })
+            .catch(next)
+      })
+      .get((req, res, next) => {
+              res.json(serializeComment(res.comment))
+            })
 
   module.exports = commentsRouter

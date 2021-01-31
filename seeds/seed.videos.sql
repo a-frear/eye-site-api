@@ -16,18 +16,15 @@ VALUES
     ('eye on the ball', 'Amy Frear', 'https://www.youtube.com/embed/M78rsWdFYhE?rel=0', 'http://localhost:8000/images/asset-14.png', 'http://localhost:8000/images/pink-eye-14.png'),
     ('wide open', 'Amy Frear', 'https://www.youtube.com/embed/pYHgutvpxWQ?rel=0', 'http://localhost:8000/images/asset-15.png', 'http://localhost:8000/images/pink-eye-15.png');
 
-INSERT INTO users (email, nickname)
-VALUES
-    ('amy.frear@temple.edu', 'amy');
 
-INSERT INTO comments (video_id, user_id, content)
+INSERT INTO comments (video_id, user_name, content)
 VALUES 
-    (1, 1, 'Love this!'),
-    (2, 1, 'Wow!'),
-    (3, 1, 'I was on the edge of my seat!'),
-    (4, 1, 'Really good!'),
-    (5, 1, 'Eyes are life!'),
-    (6, 1, 'I asked God for this and he gave it to me!');
+    (1, 'eye_friend', 'Love this!'),
+    (2, 'eyelover89', 'Wow!'),
+    (3, 'eyes4ever', 'I was on the edge of my seat!'),
+    (4, 'eye.grrrl', 'Really good!'),
+    (5, 'eye_taco', 'Eyes are life!'),
+    (6, 'eyeeeeeee', 'I asked God for this and he gave it to me!');
 
 
 
