@@ -3,9 +3,9 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const audience = 'https://express.eye-site'
-const domain = process.env.AUTH0_DOMAIN
+const domain = 'dev-lukn5ug2.us.auth0.com'
 const serverPort = process.env.PORT
-const clientOriginUrl = process.env.CLIENT_ORIGIN_URL
+const clientOriginUrl = 'http://localhost:3000'
 
 if (!audience) {
     throw new Error(
