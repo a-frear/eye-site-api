@@ -3,7 +3,7 @@ const xss = require('xss')
 const CommentsService = require('./commentsService')
 const commentsRouter = express.Router()
 const jsonParser = express.json()
-const { checkJwt } = require("../authz/check-jwt");
+const { checkJwt } = require("../authz/check-jwt")
 
 const serializeComment = comment => ({
     id: comment.id,

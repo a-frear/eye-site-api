@@ -1,6 +1,5 @@
 const express = require('express')
 const LikesService = require('./likesService')
-//const { requiresAuth } = require('express-openid-connect');
 const likesRouter = express.Router()
 const jsonParser = express.json()
 
@@ -18,10 +17,9 @@ likesRouter
           res.json(likes.map(serializeLikes))
         })
         .catch(next)
-        //passing next into the .catch from the promise chain so that any errors get handled by our error handler middleware.
   })
 
-  .post(jsonParser, /*requiresAuth(),*/ (req, res, next) => {
+  .post(jsonParser, (req, res, next) => {
     const { video_id } = req.body
     const newLike = { video_id }
 
