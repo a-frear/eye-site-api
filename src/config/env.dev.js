@@ -33,6 +33,7 @@ if (!clientOriginUrl) {
 
 const clientOrigins = ['https://eyesite.club']
 
+
 module.exports = {
     audience,
     domain,
