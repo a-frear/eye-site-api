@@ -5,7 +5,7 @@ const app = require("../src/app");
 const {
   makeCommentsArray,
   makeMaliciousComment,
-  authToken
+  authToken,
 } = require("./comments.fixtures");
 const { makeVideosArray } = require("./videos.fixtures");
 
@@ -93,7 +93,7 @@ describe("Comments Endpoints", function () {
       return (
         supertest(app)
           .post(`/api/comments`)
-          .set('Authorization', 'bearer ' + authToken)
+          .set("Authorization", "bearer " + authToken)
           .send(newComment)
           // .expect(201)
           .expect((res) => {
@@ -119,7 +119,7 @@ describe("Comments Endpoints", function () {
       return (
         supertest(app)
           .post(`/api/comments`)
-          .set('Authorization', 'bearer ' + authToken)
+          .set("Authorization", "bearer " + authToken)
           .send(maliciousComment)
           //   .expect(201)
           .expect((res) => {
