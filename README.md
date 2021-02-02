@@ -32,6 +32,7 @@ GET /videos
 # Success Response:
 
 >Code: 200
+>
 >Content: [
 >{
 >"id": 1,
@@ -73,9 +74,12 @@ GET /comments
 # Errors:
 
 >Code: 400
+>
 >Message: 'Missing <key> in request body'
 >
+>
 >Code: 404
+>
 >Message: 'Comment does not exist'
 
 # Method:
@@ -103,6 +107,7 @@ POST /comments
 # Success Response:
 
 >Code: 201
+>
 >Content: [
 >{
 >id": 7,
@@ -116,6 +121,7 @@ POST /comments
 # Errors:
 
 >Code: 400
+>
 >Message: 'Missing <key> in request body'
 
 # Method:
@@ -134,6 +140,7 @@ GET /likes
 # Success Response:
 
 >Code: 200
+>
 >Content: [
 >{
 >"id": 1,
@@ -145,9 +152,11 @@ GET /likes
 # Errors:
 
 >Code: 400
+>
 >Message: 'Missing <key> in request body'
 >
 >Code: 404
+>
 >Message: 'Comment does not exist'
 
 # Method:
@@ -173,6 +182,7 @@ POST /likes
 # Success Response:
 
 >Code: 201
+>
 >Content: [
 >{
 >"id": 7,
