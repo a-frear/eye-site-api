@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS videos, users, comments, likes; 
+DROP TABLE IF EXISTS videos, comments, likes; 
