@@ -1,7 +1,5 @@
 # Eye Site API
 
-Example of use: https://eyesite.club/
-
 # Summary
 
 Discover videos about eyes, for eyes.
@@ -190,6 +188,10 @@ Node
 Express
 
 PostgreSQL
+
+# Example of use: 
+
+https://eyesite.club/
 
 # Client repo:
 
