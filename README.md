@@ -1,6 +1,6 @@
 # Eye Site API
 
-https://eyesite.club/
+Example of use: https://eyesite.club/
 
 # Summary
 
