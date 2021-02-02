@@ -2,6 +2,7 @@ const express = require("express");
 const LikesService = require("./likesService");
 const likesRouter = express.Router();
 const jsonParser = express.json();
+const { checkJwt } = require("../authz/check-jwt");
 
 const serializeLikes = (like) => ({
   id: like.id,
@@ -20,9 +21,9 @@ likesRouter
       .catch(next);
   })
 
-  .post(jsonParser, (req, res, next) => {
-    const { video_id, user } = req.body;
-    const newLike = { video_id, user };
+  .post(jsonParser, checkJwt, (req, res, next) => {
+    const { video_id, user_name } = req.body;
+    const newLike = { video_id, user_name };
 
     LikesService.addLike(req.app.get("db"), newLike)
       .then((like) => {
