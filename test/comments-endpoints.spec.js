@@ -95,7 +95,7 @@ describe("Comments Endpoints", function () {
           .post(`/api/comments`)
           .set("Authorization", "bearer " + authToken)
           .send(newComment)
-          // .expect(201)
+           .expect(201)
           .expect((res) => {
             expect(res.body.content).to.eql(newComment.content);
             expect(res.body.video_id).to.eql(newComment.video_id);
@@ -121,7 +121,7 @@ describe("Comments Endpoints", function () {
           .post(`/api/comments`)
           .set("Authorization", "bearer " + authToken)
           .send(maliciousComment)
-          //   .expect(201)
+             .expect(201)
           .expect((res) => {
             expect(res.body.content).to.eql(expectedComment.content);
           })

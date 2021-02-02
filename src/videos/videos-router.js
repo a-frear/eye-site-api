@@ -18,7 +18,6 @@ videosRouter.route("/").get((req, res, next) => {
       res.json(vid.map(serializeVideo));
     })
     .catch(next);
-  //passing next into the .catch from the promise chain so that any errors get handled by our error handler middleware.
 });
 
 module.exports = videosRouter;
