@@ -59,6 +59,7 @@ GET /comments
 # Success Response:
 
 >Code: 200
+>
 >Content: [
 >{
 >"id": 1,
