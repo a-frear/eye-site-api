@@ -50,15 +50,10 @@ GET /comments
 # Sample Call
 
 >fetch(url + '/comments', {
-> 
 >method: "GET",
->
 >headers: {
->
 >"content-type": "application/json",
->
 >},
->
 >})
 
 # Success Response:
