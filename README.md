@@ -23,8 +23,11 @@ GET /videos
 # Sample Call:
 
 >fetch(url + '/videos', {
+>
 >method: "GET",
+>
 >headers: {
+>
 >"content-type": "application/json",
 >},
 >})
@@ -50,10 +53,15 @@ GET /comments
 # Sample Call
 
 >fetch(url + '/comments', {
+> 
 >method: "GET",
+>
 >headers: {
+>
 >"content-type": "application/json",
+>
 >},
+>
 >})
 
 # Success Response:
