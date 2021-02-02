@@ -90,42 +90,38 @@ describe("Comments Endpoints", function () {
         user_name: "test_user_123",
         video_id: 1,
       };
-      return (
-        supertest(app)
-          .post(`/api/comments`)
-          .set("Authorization", "bearer " + authToken)
-          .send(newComment)
-           .expect(201)
-          .expect((res) => {
-            expect(res.body.content).to.eql(newComment.content);
-            expect(res.body.video_id).to.eql(newComment.video_id);
-            expect(res.body.user_name).to.eql(newComment.user_name);
-            expect(res.body).to.have.property("id");
-            expect(res.headers.location).to.eql(`/api/comments/${res.body.id}`);
-            const expected = new Date().toLocaleString();
-            const actual = new Date(res.body.modified).toLocaleString();
-            expect(actual).to.eql(expected);
-          })
-          .then((postRes) =>
-            supertest(app)
-              .get(`/api/comments/${postRes.body.id}`)
-              .expect(postRes.body)
-          )
-      );
+      return supertest(app)
+        .post(`/api/comments`)
+        .set("Authorization", "bearer " + authToken)
+        .send(newComment)
+        .expect(201)
+        .expect((res) => {
+          expect(res.body.content).to.eql(newComment.content);
+          expect(res.body.video_id).to.eql(newComment.video_id);
+          expect(res.body.user_name).to.eql(newComment.user_name);
+          expect(res.body).to.have.property("id");
+          expect(res.headers.location).to.eql(`/api/comments/${res.body.id}`);
+          const expected = new Date().toLocaleString();
+          const actual = new Date(res.body.modified).toLocaleString();
+          expect(actual).to.eql(expected);
+        })
+        .then((postRes) =>
+          supertest(app)
+            .get(`/api/comments/${postRes.body.id}`)
+            .expect(postRes.body)
+        );
     });
 
     it("removes XSS attack content from response", () => {
       const { maliciousComment, expectedComment } = makeMaliciousComment();
-      return (
-        supertest(app)
-          .post(`/api/comments`)
-          .set("Authorization", "bearer " + authToken)
-          .send(maliciousComment)
-             .expect(201)
-          .expect((res) => {
-            expect(res.body.content).to.eql(expectedComment.content);
-          })
-      );
+      return supertest(app)
+        .post(`/api/comments`)
+        .set("Authorization", "bearer " + authToken)
+        .send(maliciousComment)
+        .expect(201)
+        .expect((res) => {
+          expect(res.body.content).to.eql(expectedComment.content);
+        });
     });
   });
 });

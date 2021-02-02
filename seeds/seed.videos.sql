@@ -25,7 +25,3 @@ VALUES
     (4, 'eye.grrrl', 'Really good!'),
     (5, 'eye_taco', 'Eyes are life!'),
     (6, 'eyeeeeeee', 'I asked God for this and he gave it to me!');
-
-
-
-
