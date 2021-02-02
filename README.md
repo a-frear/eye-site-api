@@ -23,11 +23,8 @@ GET /videos
 # Sample Call:
 
 >fetch(url + '/videos', {
->
 >method: "GET",
->
 >headers: {
->
 >"content-type": "application/json",
 >},
 >})
