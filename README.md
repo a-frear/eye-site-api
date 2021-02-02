@@ -10,7 +10,7 @@ Like and comment to connect with other eye lovers.
 
 This API uses GET and POST requests to communicate and HTTP response codes to indenticate status and errors. All responses come in standard JSON. All requests must include a content-type of application/json and the body must be valid JSON.
 
-For POST requests, tokens are required from client side [Auth0] (https://auth0.github.io/auth0.js/index.html) login.
+For POST requests, tokens are required from client side [Auth0](https://auth0.github.io/auth0.js/index.html) login.
 
 # URL
 
