@@ -7,7 +7,7 @@ const { checkJwt } = require("../authz/check-jwt");
 const serializeLikes = (like) => ({
   id: like.id,
   video_id: like.video_id,
-  user_name: like.user_name
+  user_name: like.user_name,
 });
 
 likesRouter
