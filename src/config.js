@@ -9,4 +9,6 @@ module.exports = {
   API_BASE_URL:
     process.env.REACT_APP_API_BASE_URL || "http://localhost:8000/api",
   CLIENT_ORIGIN: process.env.CLIENT_ORIGIN_URL,
+  audience: "https://express.eye-site",
+  domain:"dev-lukn5ug2.us.auth0.com"
 };
